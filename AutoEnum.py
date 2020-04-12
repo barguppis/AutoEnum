@@ -9,7 +9,7 @@ def Menu1():
 	print("1) Enumerate Domain and Subdomains")
 	print("2) LLMNR/NBTNS Poisoning w/ password cracking")
 	print("3) Mitm6, DNS Takeover + ntmlrelayx attack")
-	print("7) Help)
+	print("7) Help")
 	print("8) Install Dependencies")
 	print("9) About")
 	print("10) Update")
