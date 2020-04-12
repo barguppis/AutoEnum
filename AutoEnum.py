@@ -8,6 +8,7 @@ def Menu1():
 	print("\nPlease run 8) Install Dependencies if this is first time\nstart up\n")
 	print("1) Enumerate Domain and Subdomains")
 	print("2) LLMNR/NBTNS Poisoning w/ password cracking")
+	print("3) Mitm6, DNS Takeover + ntmlrelayx attack")
 	print("7) Help")
 	print("8) Install Dependencies")
 	print("9) About")
@@ -57,6 +58,14 @@ def Option2():
 	os.system("./Poisoner.sh")
 	input("Press Enter to go back...")
 	return
+def Option3():
+	os.system("clear")
+	print("==================================================")
+	print("=     Mitm6, DNS Takeover + ntmlrelayx attack    =")
+	print("==================================================")
+	print("\nUnder Construction")
+	input("Press Enter to go back...")
+	return
 def Option7():
 	os.system("clear")
 	print("==================================================")
@@ -69,68 +78,9 @@ def Option7():
 	return
 def Option8():
 	os.system("clear")
-	print("==================================================")
-	print("=            Installing Dependencies...          =")
-	print("==================================================")
-	print("\n")
-	print("Please run this script as root\n")
-	print("Make sure your etc/apt/sources.list file is populated")
-	if (str(os.popen("whoami | tr '\n' ','").read()) != "root,"):
-		print("You are " + str(os.popen("whoami | tr '\n' ','").read()) + " not root")
-		print("Aborting...")
-		time.sleep(5)
-		return
-	time.sleep(2)
-	os.system("chmod +x EnumDomain.sh && chmod +x Poisoner.sh")
-	os.system("echo 'deb http://http.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list")
-	os.system("apt install -y --fix-broken sublist3r")
-	os.system("apt install -y python3-pip")
-	os.system("if [ -d 'EyeWitness' ] ; then rm -r EyeWitness ; fi")
-	os.system("git clone https://github.com/FortyNorthSecurity/EyeWitness.git")
-	os.system("cd EyeWitness/Python/setup && chmod +x setup.sh && ./setup.sh")
-	os.system("cd ../../..")
-	os.system("apt install -y responder")
-	os.system("apt install -y nmap")
-	os.system("apt install -y hashcat")
-	finished = input("Finished! Would you like to check if all components installed correctly? [y/n]: ")
-	if (finished == "y" or finished == "Y" or finished == "yes" or finished == "Yes" or finished == "YES"):
-		working = 0
-		if (len(str(os.popen("sublist3r | grep Ahmed").read())) > 0):
-			working += 1
-			print("Sublist3r is installed properly!")
-		else:
-			print("Sublist3r did not install properly.")
-		if (len(str(os.popen("responder | grep Laurent").read())) > 0):
-			working += 1
-			print("Responder is installed properly!")
-		else:
-			print("Responder did not install properly.")
-		if (len(str(os.popen("nmap | grep FIREWALL/IDS").read())) > 0):
-			working += 1
-			print("Nmap is installed properly!")
-		else:
-			print("Nmap did not install properly.")
-		if (len(str(os.popen("python3 EyeWitness/Python/EyeWitness.py | grep FortyNorth").read())) > 0):
-			working += 1
-			print("EyeWitness is installed properly!")
-		else:
-			print("EyeWitness did not install properly.")
-		if (len(str(os.popen("hashcat | grep hccapxfile").read())) > 0):
-			working += 1
-			print("Hashcat is installed properly!")
-		else:
-			print("Hashcat did not install properly.")
-		if (len(str(os.popen("pip3 | grep proxy.server:port.").read())) > 0):
-			working += 1
-			print("pip3 for Python3 is installed properly!")
-		else:
-			print("Sublist3r did not install properly.")
-		print(str(working) + "/6 dependencies installed correctly")
-		input("Press Enter to go back to the main menu")
-		return
-	else:
-		time.sleep(1)
-		return
+	os.system("chmod +x setup.sh")
+	os.system("./setup.sh")
+	return
 def Option9():
 	os.system("clear")
 	print("==================================================")
@@ -152,6 +102,8 @@ while (option != "exit"):
 		Option1()
 	if (option == "2"):
 		Option2()
+	if (option == "3"):
+		Option3()
 	if (option == "7"):
 		Option7()
 	if (option == "8"):
