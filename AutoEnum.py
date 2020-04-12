@@ -9,9 +9,10 @@ def Menu1():
 	print("1) Enumerate Domain and Subdomains")
 	print("2) LLMNR/NBTNS Poisoning w/ password cracking")
 	print("3) Mitm6, DNS Takeover + ntmlrelayx attack")
-	print("7) Help")
+	print("7) Help)
 	print("8) Install Dependencies")
 	print("9) About")
+	print("10) Update")
 	print("\n")
 def Option1():
 	os.system("clear")
@@ -94,6 +95,11 @@ def Option9():
 	print("\n")
 	input("Press Enter to go back... ")
 	return
+
+def Option10():
+	os.system("chmod +x update.sh")
+	os.system("./update.sh")
+	os.system("exit")
 option = 0
 while (option != "exit"):
 	Menu1()
@@ -110,3 +116,5 @@ while (option != "exit"):
 		Option8()
 	if (option == "9"):
 		Option9()
+	if (option == "10"):
+		Option10()
