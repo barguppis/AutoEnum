@@ -99,7 +99,7 @@ def Option9():
 def Option10():
 	os.system("chmod +x update.sh")
 	os.system("./update.sh")
-	os.system("exit")
+	option = "exit"
 option = 0
 while (option != "exit"):
 	Menu1()
