@@ -119,3 +119,6 @@ while (option != "exit"):
 	if (option == "10"):
 		option = "exit"
 		Option10()
+		os.system("cd ..")
+		os.system("ls")
+		os.system("cd AutoEnum")
