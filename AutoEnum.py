@@ -117,4 +117,5 @@ while (option != "exit"):
 	if (option == "9"):
 		Option9()
 	if (option == "10"):
+		option = "exit"
 		Option10()
