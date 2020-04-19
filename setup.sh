@@ -8,7 +8,7 @@ if [ $(whoami) != "root" ] ; then echo "You are running as $(whoami), not root" 
 sleep 5
 chmod +x EnumDomain.sh && chmod +x Poisoner.sh
 echo 'deb http://http.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
-apt install -y --fix-broken sublist3r
+apt install -y sublist3r
 apt install -y python3-pip
 if [ -d 'mitm6' ] ; then rm -r mitm6 ; fi
 git clone https://github.com/fox-it/mitm6.git
@@ -21,6 +21,7 @@ cd ../../..
 apt install -y responder
 apt install -y nmap
 apt install -y hashcat
+apt install -y crackmapexec
 if [ -d 'impacket' ] ; then rm -r impacket ; fi
 git clone https://github.com/SecureAuthCorp/impacket.git
 cd impacket && pip3 install -r requirements.txt && python3 setup.py install && cd ..
@@ -35,6 +36,7 @@ if [ $(hashcat | grep hccapxfile | wc -m) -gt 0 ] ; then ((working++)) && echo "
 if [ $(pip3 | grep proxy.server:port. | wc -m) -gt 0 ] ; then ((working++)) && echo "pip3 for Python3 is installed properly!" ; else echo "Sublist3r did not install properly." ; fi
 if [ $(mitm6 --help | grep ignore-nofqdn | wc -m) -gt 0 ] ; then ((working++)) && echo "mitm6 is installed properly!" ; else echo "mitm6 is not installed properly" ; fi
 if [ $(python3 impacket/examples/ntlmrelayx.py --help | grep delegate-access | wc -m) -gt 0 ] ; then ((working++)) && echo "impacket is installed properly!" ; else echo "impacket is not installed properly." ; fi
-echo "$working/8 dependencies installed correctly"
+if [ $(crackmapexec | grep "{winrm,mssql,http,smb,ssh}" | wc -m) -gt 0]  then ((working++)) && echo "crackmapexec is installed properly!" ; else echo "crackmapexec is not installed properly." ; fi
+echo "$working/9 dependencies installed correctly"
 fi
 read -p "Press Enter to return to the main menu"
