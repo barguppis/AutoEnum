@@ -56,7 +56,7 @@ def Option2():
 	print("\n")
 	print("Under Construction")
 	time.sleep(3)
-	os.system("./Poisoner.sh")
+	os.system("chmod +x Poisoner.sh && ./Poisoner.sh")
 	input("Press Enter to go back...")
 	return
 def Option3():
