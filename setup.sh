@@ -12,7 +12,8 @@ apt install -y sublist3r
 apt install -y python3-pip
 if [ -d 'mitm6' ] ; then rm -r mitm6 ; fi
 git clone https://github.com/fox-it/mitm6.git
-cd mitm6 && pip3 install -r requirements.txt && python3 setup.py install && cd ..
+cd mitm6 && pip3 install -r requirements.txt && python3 setup.py install
+cd ..
 if [ -d 'mitm6' ] ; then rm -r mitm6 ; fi
 if [ -d 'EyeWitness' ] ; then rm -r EyeWitness ; fi
 git clone https://github.com/FortyNorthSecurity/EyeWitness.git
@@ -24,7 +25,8 @@ apt install -y hashcat
 apt install -y crackmapexec
 if [ -d 'impacket' ] ; then rm -r impacket ; fi
 git clone https://github.com/SecureAuthCorp/impacket.git
-cd impacket && pip3 install -r requirements.txt && python3 setup.py install && cd ..
+cd impacket && pip3 install -r requirements.txt && python3 setup.py install
+cd ..
 read -p "Finished! Would you like to check if all components installed correctly? [y/n]: " finished
 if [ $finished == "y" ] || [ $finished == "Y" ] || [ $finished == "yes" ] || [ $finished == "Yes" ] || [ $finished == "YES" ] ;
 then	
