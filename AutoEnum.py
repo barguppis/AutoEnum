@@ -55,8 +55,6 @@ def Option2():
 	print("=   LLMNR/NBTNS Poisoning w/ password cracking   =")
 	print("==================================================")
 	print("\n")
-	print("Under Construction")
-	time.sleep(3)
 	os.system("chmod +x Poisoner.sh && ./Poisoner.sh")
 	input("Press Enter to go back...")
 	return
