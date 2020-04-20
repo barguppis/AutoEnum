@@ -92,7 +92,7 @@ def Option9():
 	print("Created by Aidan Rivera")
 	print("https://www.linkedin.com/in/aidan-rivera-157090197/")
 	print("\n")
-	print("This tool is simply an automation suite, I don't claim credit for \n writing any of the underlying security tools used.")
+	print("This tool is simply a collection of automation scripts I created, I don't claim credit for \n writing any of the underlying security tools used.")
 	print("\n")
 	input("Press Enter to go back... ")
 	return
