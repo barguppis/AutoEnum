@@ -38,7 +38,7 @@ if [ $(hashcat | grep hccapxfile | wc -m) -gt 0 ] ; then ((working++)) && echo "
 if [ $(pip3 | grep proxy.server:port. | wc -m) -gt 0 ] ; then ((working++)) && echo "pip3 for Python3 is installed properly!" ; else echo "Sublist3r did not install properly." ; fi
 if [ $(mitm6 --help | grep ignore-nofqdn | wc -m) -gt 0 ] ; then ((working++)) && echo "mitm6 is installed properly!" ; else echo "mitm6 is not installed properly" ; fi
 if [ $(python3 impacket/examples/ntlmrelayx.py --help | grep delegate-access | wc -m) -gt 0 ] ; then ((working++)) && echo "impacket is installed properly!" ; else echo "impacket is not installed properly." ; fi
-if [ $(crackmapexec | grep "{winrm,mssql,http,smb,ssh}" | wc -m) -gt 0]  then ((working++)) && echo "crackmapexec is installed properly!" ; else echo "crackmapexec is not installed properly." ; fi
+if [ $(crackmapexec | grep winrm,mssql,http,smb | wc -m) -gt 0] ; then ((working++)) && echo "crackmapexec is installed properly!" ; else echo "crackmapexec is not installed properly." ; fi
 echo "$working/9 dependencies installed correctly"
 fi
 read -p "Press Enter to return to the main menu"
